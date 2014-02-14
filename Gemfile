@@ -28,6 +28,7 @@ gem 'twitter-bootstrap-rails'
 group :development do
   gem 'awesome_print'
   gem 'erb2haml'
+  gem 'magic_encoding'
 end
 
 group :doc do

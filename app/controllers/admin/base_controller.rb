@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::BaseController < ApplicationController
   layout "admin"
 
@@ -5,11 +6,7 @@ class Admin::BaseController < ApplicationController
   before_filter :login_required
 
   def current_user
-    begin
-      @account = Account.find_by(_id: session[:uid])
-    rescue Mongoid::Errors::DocumentNotFound 
-      nil
-    end
+    @account = Account.find_by(_id: session[:uid])
   end
 
   def login_required

@@ -1,0 +1,9 @@
+= form_tag session_path, :class => "form form-horizontal" do
+  = control_group_helper "User Login" do
+    = text_field_tag "login"
+
+  = control_group_helper "password" do
+    = password_field_tag "password"
+
+  .form-actions
+    = submit_tag "Login", :class => "btn btn-primary"

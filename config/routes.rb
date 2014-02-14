@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Mhero::Application.routes.draw do
   get "welcome/index"
   resource :session
