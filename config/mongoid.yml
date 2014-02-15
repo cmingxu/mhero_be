@@ -9,7 +9,9 @@ development:
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - localhost:27017
+        - gamedev.108km.com:27017
+      username: www
+      password: www@www
       options:
         pool_size: 1
   # Configure Mongoid specific options. (optional)
