@@ -1,0 +1,14 @@
+= form_for [:admin, @account], :html => {:class => "form form-horizontal"} do |f|
+  = control_group_helper("Name", "Player 123", f.object.errors[:name].first) do
+    = f.text_field :name, :class => "input-large"
+
+  = control_group_helper("Email(*)", "email@email.com", f.object.errors[:email].first) do
+    = f.text_field :email, :class => "input-large"
+
+  = control_group_helper("Password", "Player 123", f.object.errors[:password].first) do
+    = f.text_field :password, :class => "input-large"
+
+
+  %hr
+  .actions
+    = f.submit "Save", :class => "btn btn-primary"

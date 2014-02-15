@@ -13,8 +13,8 @@ Mhero::Application.routes.draw do
     end
   end
 
-  namespace :api do
-    resources :account, :only => [:create, :update]
+  namespace :api, constraints: { format: 'json' } do
+    resources :accounts, :only => [:create, :update]
   end
 
   root "welcome#index"

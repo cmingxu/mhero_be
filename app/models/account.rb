@@ -3,6 +3,7 @@ class Account
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  attr_accessor :password
 
   field :email, type: String
   field :name, type: String
@@ -12,6 +13,9 @@ class Account
   field :last_login_ip, type: String
 
   validates :name, :presence => true
+  validates :name, :uniqueness => true
+  validates :email, :uniqueness => true, :allow_nil => true
+  validates :email, :format => { :with => Constants::EMAIL_REGEXP }, :allow_blank => true
 
   def password=(password)
     self.salt = SecureRandom.hex(10) 
