@@ -22,7 +22,7 @@ gem 'mongoid', github: 'mongoid/mongoid'
 
 gem 'bson_ext'
 gem "haml-rails"
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', github: "seyhunak/twitter-bootstrap-rails", branch: "bootstrap3"
 gem 'kaminari'
 
 

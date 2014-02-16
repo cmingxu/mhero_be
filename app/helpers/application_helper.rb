@@ -5,14 +5,12 @@ module ApplicationHelper
   end
 
   def control_group_helper(label_name,  description = "", error_message = "", float = "both",  &block)
-    error_class = error_message.blank? ? "" : "error"
-    error_div = content_tag(:span, error_message, :class => "help-inline")
-    group_style = (float.to_s == "both" ? "width: 98%; clear: both;" : "width: 40%; float: #{float}")
+    error_class = error_message.blank? ? "has-success" : "has-error  has-feedback"
+    error_div = content_tag(:span, error_message, :class => "glyphicon glyphicon-remove form-control-feedback")
     label_html = content_tag(:span, label_name, :class => "control-label")
-    description_html = content_tag(:span, "（#{description})", :class => "control-description")
-    field = content_tag(:div, capture(&block) + error_div, :class => "controls")
-    clear = if "left" == float then "" else content_tag(:div, "", :class => "clear") end
-    content_tag(:div, label_html + description_html + field, :class => "control-group #{error_class}", :style => group_style) + clear
+    description_html = content_tag(:p, "（#{description})", :class => "help-block")
+    field = content_tag(:div, capture(&block) + error_div)
+    content_tag(:div, label_html + field + description_html, :class => "form-group #{error_class}")
   end
 
 

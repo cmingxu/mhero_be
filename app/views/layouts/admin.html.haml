@@ -19,31 +19,27 @@
 
 
   %body
-    .navbar.navbar-fluid-top
-      .navbar-inner
-        .container-fluid
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="/admin") Mhero
-          .container.nav-collapse
-            %ul.nav.pull-right
-              %li= link_to "Logout", session_path, :method => :delete
-              %li= link_to "Change Pass", admin_moderator_new_password_path(current_user)
+    .navbar.navbar-fixed-top.navbar-inverse
+      .container
+        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand(href="#") Mhero
+        .nav-collapse.collapse.navbar-responsive-collapse
+          %ul.nav.navbar-nav
+            %li= link_to "Logout", session_path(:method => :delete)
+            %li= link_to "Link 2", "/path2"
 
-    .container-fluid
-
-      .row-fluid
-        .span3
-          .well.sidebar-nav
+    .container.main-content
+      .row
+        .col-lg-3.sidebar
+          .sidebar-nav
             %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Accounts", "/admin/accounts"
-              %li= link_to "Moderators", "/admin/moderators"
-        .span9
+              %li= link_to "Accounts", admin_accounts_path
+              %li= link_to "Moderators", admin_moderators_path
+        .col-lg-9.col-sm-offset-3
           = bootstrap_flash
           = yield
-    
       %footer
-        %p &copy; Company 2014
+        %p &copy; 108km.com 2014

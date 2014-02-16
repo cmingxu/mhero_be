@@ -19,27 +19,26 @@
 
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") Mhero
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Login", new_session_path
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+    .navbar.navbar-static-top
+      .container
+        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand(href="#") Mhero
+        .nav-collapse.collapse.navbar-responsive-collapse
+          %ul.nav.navbar-nav
+            %li= link_to "Link 1", "/path1"
+            %li= link_to "Link 2", "/path2"
+            %li= link_to "Link 3", "/path3"
+            %li= link_to "Link 3", "/path3"
 
-    .container.main-body
-
+    .container
       .row
-        .span9
+        .col-lg-9
           = bootstrap_flash
           = yield
-        .span3
+        .col-lg-3
           .well.sidebar-nav
             %h3 Sidebar
             %ul.nav.nav-list
@@ -47,6 +46,5 @@
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
-    
       %footer
         %p &copy; Company 2014
