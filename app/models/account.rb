@@ -11,6 +11,7 @@ class Account
   field :salt, type: String
   field :last_login_at, type: DateTime
   field :last_login_ip, type: String
+  field :login_token, type: String
 
   validates :name, :presence => true
   validates :name, :uniqueness => true
@@ -28,5 +29,12 @@ class Account
 
   def encrypt_password(password)
     Digest::SHA1.hexdigest(password + self.salt)
+  end
+
+  def to_api_json
+    {
+      :name => self.name,
+      :email => self.email
+    }
   end
 end
