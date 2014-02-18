@@ -69,7 +69,7 @@ namespace :deploy do
   task :bundle_update do
     on roles(:app) do 
       within("#{current_path}") do
-        execute "bundle install --local"
+        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile bundle install --local"
       end
     end
   end
