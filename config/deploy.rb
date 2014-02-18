@@ -31,7 +31,7 @@ set :deploy_to, '/home/www/code'
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
-set :default_env, { BUNDLE_GEMFILE: "#{current_path}/Gemfile"}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
@@ -49,7 +49,7 @@ namespace :unicorn do
   task :start do
     on roles(:app) do 
       within("#{current_path}") do
-        execute "bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
+        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
       end
     end
   end
@@ -61,7 +61,7 @@ namespace :unicorn do
           pid = capture "cat #{current_path}/tmp/pids/unicorn.pid"
           execute "kill -HUP #{pid}" if pid
         end
-        execute "bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
+        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
       end
     end
   end
@@ -71,7 +71,7 @@ namespace :deploy do
   task :bundle_update do
     on roles(:app) do 
       within("#{current_path}") do
-        execute " bundle install --local"
+        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile bundle install --local"
       end
     end
   end
