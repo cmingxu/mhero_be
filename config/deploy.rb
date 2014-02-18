@@ -73,7 +73,7 @@ namespace :deploy do
   task :asset_compile do
     on roles(:app) do 
       within("#{current_path}") do
-        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile  bundle exec rake assets:precompile"
+        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile rake assets:precompile"
       end
     end
   end
