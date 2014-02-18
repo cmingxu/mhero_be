@@ -60,14 +60,24 @@ namespace :unicorn do
         if test("[ -f #{current_path}/tmp/pids/unicorn.pid ]")
           pid = capture "cat #{current_path}/tmp/pids/unicorn.pid"
           execute "kill -HUP #{pid}" if pid
+          execute "rm #{current_path}/tmp/pids/unicorn.pid"
         end
         execute "BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
       end
     end
   end
-
 end
+
 namespace :deploy do
+  desc "asset_compile"
+  task :asset_compile do
+    on roles(:app) do 
+      within("#{current_path}") do
+        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile  bundle exec rake assets:precompile"
+      end
+    end
+  end
+
   task :bundle_update do
     on roles(:app) do 
       within("#{current_path}") do
@@ -77,6 +87,7 @@ namespace :deploy do
   end
 
   after "deploy:published", "deploy:bundle_update"
-  after "deploy:bundle_update", "unicorn:restart"
+  after "deploy:published", "deploy:asset_compile"
+  after "deploy:published", "unicorn:restart"
 
 end
