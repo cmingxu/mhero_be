@@ -59,7 +59,7 @@ namespace :unicorn do
       within("#{current_path}") do
         if test("[ -f #{current_path}/tmp/pids/unicorn.pid ]")
           pid = capture "cat #{current_path}/tmp/pids/unicorn.pid"
-          execute "kill -HUP #{pid}" if pid
+          execute "kill -9 #{pid}" if pid
           execute "rm #{current_path}/tmp/pids/unicorn.pid"
         end
         execute "BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
