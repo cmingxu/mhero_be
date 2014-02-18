@@ -49,7 +49,7 @@ namespace :unicorn do
   task :start do
     on roles(:app) do 
       within("#{current_path}") do
-        execute "uncorn_rails -c #{current_path}/config/unicorn.rb -D"
+        execute "bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
       end
     end
   end
@@ -61,7 +61,7 @@ namespace :unicorn do
           pid = capture "cat #{current_path}/tmp/pids/unicorn.pid"
           execute "kill -HUP #{pid}" if pid
         end
-        execute "uncorn_rails -c #{current_path}/config/unicorn.rb -D"
+        execute "bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
       end
     end
   end
