@@ -39,7 +39,7 @@ end
 gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
-gem 'capistrano-unicorn', :require => false
+gem 'capistrano', github: "capistrano/capistrano"
+
 
 

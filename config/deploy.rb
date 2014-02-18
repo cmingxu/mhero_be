@@ -1,7 +1,6 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 
-require 'capistrano-unicorn'
 unicorn_env = "#{current_path}/config/unicorn"
 
 set :application, 'mhero_be'
@@ -37,8 +36,36 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :deploy do
+namespace :unicorn do
+  task :stop do
+    on roles(:app) do 
+      within("#{current_path}") do
+        pid = capture "cat #{current}/tmp/pids/unicorn.pid"
+        execute "kill -HUP #{pid}"
+      end
+    end
+  end
 
+  task :start do
+    on roles(:app) do 
+      within("#{current_path}") do
+        execute "uncorn_rails -c #{current_path}/config/unicorn.rb -D"
+      end
+    end
+  end
+
+  task :restart do
+    on roles(:app) do 
+      within("#{current_path}") do
+        pid = capture "cat #{current}/tmp/pids/unicorn.pid"
+        execute "kill -HUP #{pid}" if pid
+        execute "uncorn_rails -c #{current_path}/config/unicorn.rb -D"
+      end
+    end
+  end
+
+end
+namespace :deploy do
   task :bundle_update do
     on roles(:app) do 
       within("#{current_path}") do
@@ -48,8 +75,6 @@ namespace :deploy do
   end
 
   after "deploy:published", "deploy:bundle_update"
-  after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
-  after 'deploy:restart', 'unicorn:restart'   # app preloaded
-  after 'deploy:restart', 'unicorn:duplicate'
+  after "deploy:bundle_update", "unicorn:restart"
 
 end
