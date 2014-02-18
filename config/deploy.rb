@@ -31,7 +31,7 @@ set :deploy_to, '/home/www/code'
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { BUNDLE_GEMFILE: "#{current_path}/Gemfile"}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
@@ -71,7 +71,7 @@ namespace :deploy do
   task :bundle_update do
     on roles(:app) do 
       within("#{current_path}") do
-        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile bundle install --local"
+        execute " bundle install --local"
       end
     end
   end
