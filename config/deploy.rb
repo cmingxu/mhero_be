@@ -1,6 +1,9 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 
+require 'capistrano-unicorn'
+unicorn_env = "#{current_path}/config/unicorn"
+
 set :application, 'mhero_be'
 set :repo_url, 'git@github.com:cmingxu/mhero_be.git'
 
@@ -23,10 +26,10 @@ set :deploy_to, '/home/www/code'
 # set :pty, true
 
 # Default value for :linked_files is []
-#set :linked_files, %w{config/mongoid.yml}
+set :linked_files, %w{config/mongoid.yml}
 
 # Default value for linked_dirs is []
-#set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -36,28 +39,8 @@ set :deploy_to, '/home/www/code'
 
 namespace :deploy do
 
-  
-  task :unicorn do
-    run "cd #{current_path} && bundle exec unicorn -c #{current_path}/config/unicorn.rb -D"
-  end
-  after :finished, 'deploy:unicorn'
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      run "cd #{current_path} && bundle exec unicorn -c #{current_path}/config/unicorn.rb -D"
-    end
-  end
-
-  after :publishing, :restart
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
+  after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
+  after 'deploy:restart', 'unicorn:restart'   # app preloaded
+  after 'deploy:restart', 'unicorn:duplicate'
 
 end
