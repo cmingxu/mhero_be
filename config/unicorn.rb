@@ -1,4 +1,5 @@
-root = Rails.env.development? ? File.expand_path(File.join(File.dirname(__FILE__), "..")) : "/home/www/code/current"
+#root = Rails.env.development? ? File.expand_path(File.join(File.dirname(__FILE__), "..")) : "/home/www/code/current"
+root = "/home/www/code/current"
 
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
