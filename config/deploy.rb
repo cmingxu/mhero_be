@@ -57,7 +57,7 @@ namespace :unicorn do
   task :restart do
     on roles(:app) do 
       within("#{current_path}") do
-        pid = capture "cat #{current}/tmp/pids/unicorn.pid"
+        pid = capture "cat #{current_path}/tmp/pids/unicorn.pid"
         execute "kill -HUP #{pid}" if pid
         execute "uncorn_rails -c #{current_path}/config/unicorn.rb -D"
       end
