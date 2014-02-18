@@ -39,6 +39,15 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 namespace :deploy do
 
+  task :bundle_update do
+    on roles(:app) do 
+      within("#{current_path}") do
+        execute "bundle install --local"
+      end
+    end
+  end
+
+  after "deploy:published", "deploy:bundle_update"
   after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
   after 'deploy:restart', 'unicorn:restart'   # app preloaded
   after 'deploy:restart', 'unicorn:duplicate'
