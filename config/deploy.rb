@@ -23,10 +23,10 @@ set :deploy_to, '/home/www/code'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/mongoid.yml}
+#set :linked_files, %w{config/mongoid.yml}
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+#set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -36,11 +36,16 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 namespace :deploy do
 
+  
+  task :unicorn do
+    run "cd #{current_path} && bundle exec unicorn -c #{current_path}/config/unicorn.rb -D"
+  end
+  after :finished, 'deploy:unicorn'
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
+      run "cd #{current_path} && bundle exec unicorn -c #{current_path}/config/unicorn.rb -D"
     end
   end
 
