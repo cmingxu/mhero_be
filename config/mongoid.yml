@@ -3,9 +3,8 @@ development:
     default:
       database: mhero_global_dev
       hosts:
-        - gamedev.108km.com:27017
-      username: www
-      password: www@www
+        - localhost:27017
+      username: xcm
       options:
         pool_size: 1
 
@@ -14,7 +13,20 @@ development:
         hosts:
           - localhost
         username: xcm
-        password:
+        options:
+          pool_size: 1
+
+        database: mhero_world2_dev
+        hosts:
+          - localhost
+        username: xcm
+        options:
+          pool_size: 1
+
+        database: mhero_world3_dev
+        hosts:
+          - localhost
+        username: xcm
         options:
           pool_size: 1
 
