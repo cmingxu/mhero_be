@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Moderator
+class Moderator < GlobalBase
   include Mongoid::Document
   include Mongoid::Timestamps
  

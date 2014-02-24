@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 Mhero::Application.routes.draw do
+  resources :worlds
+
   get "welcome/index"
   resource :session
 

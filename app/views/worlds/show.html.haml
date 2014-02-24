@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @world.name
+%p
+  %b Account count:
+  = @world.account_count
+
+= link_to 'Edit', edit_world_path(@world)
+\|
+= link_to 'Back', worlds_path
