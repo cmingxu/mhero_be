@@ -8,11 +8,19 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-account = Account.new name: "xcm", email: "cming.xu@gmail.com"
-account.password = "admin"
-account.save
+moderator = Moderator.new email: "cming.xu@gmail.com"
+moderator.password = "admin"
+moderator.save
 
 
-account = Account.new name: "whygod", email: "whygod@gmail.com"
-account.password = "admin"
-account.save
+moderator = Moderator.new email: "whygod@gmail.com"
+moderator.password = "admin"
+moderator.save
+
+
+uniq_user = UniqUser.new email: "cming.xu@gmail.com"
+uniq_user.password = "admin"
+uniq_user.save
+uniq_user = UniqUser.new email: "whygod@gmail.com"
+uniq_user.password = "admin"
+uniq_user.save

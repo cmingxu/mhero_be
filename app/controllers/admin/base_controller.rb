@@ -6,7 +6,7 @@ class Admin::BaseController < ApplicationController
   before_filter :login_required
 
   def current_user
-    @account = Account.find_by(_id: session[:uid])
+    @account = Moderator.find_by(_id: session[:uid])
   end
 
   def login_required

@@ -28,7 +28,7 @@
         %a.navbar-brand(href="#") Mhero
         .nav-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Logout", session_path(:method => :delete)
+            %li= link_to "Logout", sessions_path(:method => :delete)
             %li= link_to "Link 2", "/path2"
 
     .container.main-content
@@ -36,7 +36,8 @@
         .col-lg-3.sidebar
           .sidebar-nav
             %ul.nav.nav-list
-              %li= link_to "Accounts", admin_accounts_path
+              %li= link_to "Users", admin_moderators_path
+              %li= link_to "UniqUsers", admin_uniq_users_path
               %li= link_to "Moderators", admin_moderators_path
         .col-lg-9.col-sm-offset-3
           = bootstrap_flash

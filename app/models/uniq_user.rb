@@ -12,6 +12,9 @@ class UniqUser < GlobalBase
   field :last_login_ip, type: String
   field :login_token, type: String
 
+  embeds_many :device_infos
+  has_many :users
+
   validates :email, :uniqueness => true, :allow_nil => true
   validates :email, :format => { :with => Constants::EMAIL_REGEXP }, :allow_blank => true
 

@@ -1,4 +1,5 @@
 class User < WorldBase
+
   field :nick_name, type: String
   field :last_login_at, type: DateTime
   field :level, type: Integer

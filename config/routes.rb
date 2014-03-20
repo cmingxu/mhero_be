@@ -1,12 +1,13 @@
 # -*- encoding : utf-8 -*-
 Mhero::Application.routes.draw do
 
-  resource :session
+  resource :sessions
 
   namespace :admin do
     get "/dashboard", to: "base#index"
     get "/", to: "base#index"
     resources :users
+    resources :uniq_users
     resources :worlds
     resources :moderators do
       get :new_password
