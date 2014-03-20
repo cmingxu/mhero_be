@@ -8,7 +8,7 @@ Mhero::Application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "base#index"
     get "/", to: "base#index"
-    resources :accounts
+    resources :users
     resources :moderators do
       get :new_password
       put :change_password
@@ -16,7 +16,7 @@ Mhero::Application.routes.draw do
   end
 
   namespace :api, constraints: { format: 'json' } do
-    resources :accounts, :only => [:create, :update] do
+    resources :users, :only => [:create, :update] do
       collection do
         put :login
       end

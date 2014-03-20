@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class Account < WorldBase
+class User < WorldBase
   include Mongoid::Document
   include Mongoid::Timestamps
 
