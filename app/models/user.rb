@@ -1,4 +1,6 @@
 class User < WorldBase
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :nick_name, type: String
   field :last_login_at, type: DateTime

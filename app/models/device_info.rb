@@ -5,5 +5,5 @@ class DeviceInfo < GlobalBase
   field :platform,    type: String
   field :os_version,  type: String
 
-  embeded_in :uniq_user
+  embedded_in :uniq_user
 end

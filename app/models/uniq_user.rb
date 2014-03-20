@@ -6,6 +6,7 @@ class UniqUser < GlobalBase
   attr_accessor :password
 
   field :email, type: String
+  field :name, type: String
   field :encrypted_password, type: String
   field :salt, type: String
   field :last_login_at, type: DateTime
