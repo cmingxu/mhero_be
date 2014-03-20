@@ -7,5 +7,7 @@ class User < WorldBase
   field :gems, type: Integer
   field :friend_point, type: Integer
 
+  embeds_many :characters
+
 
 end
