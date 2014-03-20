@@ -9,6 +9,9 @@ class User < WorldBase
   field :money, type: Integer
   field :gems, type: Integer
   field :friend_point, type: Integer
+  field :char_capacity, type: Integer
+  field :char_colddown_time, type: Integer
+  field :pvp_times, type: Integer
 
   embeds_many :characters
 
