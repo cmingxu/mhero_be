@@ -1,14 +1,13 @@
 # -*- encoding : utf-8 -*-
 Mhero::Application.routes.draw do
-  resources :worlds
 
-  get "welcome/index"
   resource :session
 
   namespace :admin do
     get "/dashboard", to: "base#index"
     get "/", to: "base#index"
     resources :users
+    resources :worlds
     resources :moderators do
       get :new_password
       put :change_password
@@ -16,11 +15,14 @@ Mhero::Application.routes.draw do
   end
 
   namespace :api, constraints: { format: 'json' } do
-    resources :users, :only => [:create, :update] do
+    get "home" => "api/home#index"
+    resources :uniq_users, :only => [:create, :update] do
       collection do
         put :login
       end
     end
+    
+    resources :worlds, :only => [:index]
   end
 
   root "welcome#index"

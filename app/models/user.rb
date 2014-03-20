@@ -1,40 +1,11 @@
-# -*- encoding : utf-8 -*-
 class User < WorldBase
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
-  attr_accessor :password
-
-  field :email, type: String
-  field :name, type: String
-  field :encrypted_password, type: String
-  field :salt, type: String
+  field :nick_name, type: String
   field :last_login_at, type: DateTime
-  field :last_login_ip, type: String
-  field :login_token, type: String
+  field :level, type: Integer
+  field :energy, type: Integer
+  field :money, type: Integer
+  field :gems, type: Integer
+  field :friend_point, type: Integer
 
-  validates :name, :presence => true
-  validates :name, :uniqueness => true
-  validates :email, :uniqueness => true, :allow_nil => true
-  validates :email, :format => { :with => Constants::EMAIL_REGEXP }, :allow_blank => true
 
-  def password=(password)
-    self.salt = SecureRandom.hex(10) 
-    self.encrypted_password = encrypt_password(password)
-  end
-
-  def password_valid?(password)
-    self.encrypted_password == encrypt_password(password)
-  end
-
-  def encrypt_password(password)
-    Digest::SHA1.hexdigest(password + self.salt)
-  end
-
-  def to_api_json
-    {
-      :name => self.name,
-      :email => self.email
-    }
-  end
 end
