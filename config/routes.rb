@@ -16,7 +16,7 @@ Mhero::Application.routes.draw do
   end
 
   namespace :api, constraints: { format: 'json' } do
-    get "home" => "api/home#index"
+    get "home" => "home#index"
     resources :uniq_users, :only => [:create, :update] do
       collection do
         put :login

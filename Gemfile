@@ -37,6 +37,7 @@ group :doc do
 end
 
 gem 'unicorn'
+gem "moped"
 
 # Use Capistrano for deployment
 gem 'capistrano', github: "capistrano/capistrano"

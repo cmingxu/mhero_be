@@ -29,6 +29,14 @@ class ApiTest
     resp = self.class.put "/api/uniq_users/login",:body => {"name" => "player_abcde", "password" => "admin"}.to_json
     puts resp.body
   end
+
+  def test_home_index
+    self.class.post "/api/uniq_users",:body => {:uniq_user => {"name" => "player_abcde", "password" => "admin"}}.to_json
+    resp = self.class.put "/api/uniq_users/login",:body => {"name" => "player_abcde", "password" => "admin"}.to_json
+    body = JSON.parse(resp.body)
+    resp = self.class.get "/api/home?login_token=#{body['login_token']}"
+    puts resp.body
+  end
 end
 
 def log(what)
