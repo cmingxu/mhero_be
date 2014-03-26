@@ -26,3 +26,14 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+
+### Login ###
+
+``` curl -X PUT localhost:3000/api/uniq_users/login -d "name=player_abc&password=admin"
+
+
+``` curl "http://localhost:3000/api/home?login_token=f097c5cde9c8ff62"
+
+
