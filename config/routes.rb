@@ -9,6 +9,8 @@ Mhero::Application.routes.draw do
     resources :users
     resources :uniq_users
     resources :worlds
+    resources :char_confs
+    resources :prop_confs
     resources :moderators do
       get :new_password
       put :change_password
