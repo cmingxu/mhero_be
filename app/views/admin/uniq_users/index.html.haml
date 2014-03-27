@@ -1,0 +1,15 @@
+%table.table
+  %thead
+    %th ID
+    %th Email
+    %th
+
+  %tbody
+    - @uniq_users.each do |uu|
+      %tr
+        %td= uu._id
+        %td= uu.email
+        %td= uu.last_login_at
+
+
+= paginate @uniq_users

@@ -1,0 +1,24 @@
+%table.table
+  %thead
+    %th Nick Name
+    %th Last Login At
+    %th Level
+    %th Energy
+    %th Money
+    %th Gem
+    %th Friend Point
+
+  %tbody
+    - @users.each do |uu|
+      %tr
+        %td= uu._id
+        %td= uu.nick_name
+        %td= uu.last_login_at
+        %td= uu.level
+        %td= uu.energy
+        %td= uu.money
+        %td= uu.gems
+        %td= uu.friend_point
+
+
+= paginate @users

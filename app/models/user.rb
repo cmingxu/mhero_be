@@ -9,6 +9,6 @@ class User < WorldBase
   field :friend_point, type: Integer
 
   embeds_many :characters
-
+  belongs_to :uniq_user
 
 end

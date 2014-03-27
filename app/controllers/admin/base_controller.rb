@@ -12,7 +12,7 @@ class Admin::BaseController < ApplicationController
   def login_required
     unless current_user
       session[:redirect_to] = request.path
-      redirect_to root_path, :notice => "Login Required"
+      redirect_to new_sessions_path, :notice => "Login Required"
     end
   end
 end
