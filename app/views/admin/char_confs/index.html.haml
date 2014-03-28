@@ -1,0 +1,12 @@
+%table.table
+  %thead
+    %th Email
+    %th Friend Point
+
+  %tbody
+    - @moderators.each do |uu|
+      %tr
+        %td= uu.email
+
+
+= paginate @moderators
