@@ -1,0 +1,6 @@
+= form_for @conf_prop, :url => @conf_prop.new_record? ? admin_prop_confs_path : admin_prop_conf_path(@conf_prop), :html => { :role => "form", :class => "form-horizontal" } do |f|
+  = control_group_helper "Name", "name of characters", f.object.errors[:name].first do
+    = f.text_field :name, :class => "form-control"
+  = control_group_helper "Type", "", f.object.errors[:type].first do
+    = f.select :type, options_for_select(Conf::Prop::PROP_TYPE, f.object.type), :class => "selectpicker"
+  = f.submit "Submit", :class => "btn btn-default"

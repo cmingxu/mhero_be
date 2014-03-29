@@ -13,7 +13,7 @@ class Admin::PropConfsController < Admin::BaseController
     @conf_prop = Conf::Prop.new(conf_prop_params)
 
     if @conf_prop.save
-      redirect_to admin_conf_props_path, :notice => "create successfully"
+      redirect_to admin_prop_confs_path, :notice => "create successfully"
     else
       render "new"
     end
@@ -26,7 +26,7 @@ class Admin::PropConfsController < Admin::BaseController
   def update
     @conf_prop = Conf::Prop.find( params[:id])
     if @conf_prop.update_attributes conf_prop_params
-      redirect_to edit_admin_conf_prop_path(@conf_prop), :notice => "update successfully"
+      redirect_to edit_admin_prop_conf_path(@conf_prop), :notice => "update successfully"
     else
       render "edit"
     end
@@ -35,14 +35,14 @@ class Admin::PropConfsController < Admin::BaseController
   def destroy
     @conf_prop = Conf::Prop.find params[:id]
     if @conf_prop.destroy
-      redirect_to admin_conf_props_path, :notice => "Deleted"
+      redirect_to admin_prop_confs_path, :notice => "Deleted"
     else
-      redirect_to admin_conf_props_path, :notice => "Failed"
+      redirect_to admin_prop_confs_path, :notice => "Failed"
     end
   end
 
   private
   def conf_prop_params
-    params.require(:conf_prop).permit(:name, :type, :atk_type)
+    params.require(:conf_prop).permit(:name, :type)
   end
 end

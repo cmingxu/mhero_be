@@ -11,6 +11,7 @@ Mhero::Application.routes.draw do
     resources :worlds
     resources :char_confs
     resources :prop_confs
+    resources :skill_confs
     resources :moderators do
       get :new_password
       put :change_password
