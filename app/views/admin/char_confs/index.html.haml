@@ -1,12 +1,22 @@
+= link_to "New Character Config", new_admin_char_conf_path, :class => "btn btn-primary"
 %table.table
   %thead
-    %th Email
-    %th Friend Point
+    %th Name
+    %th Type
+    %th ATK Type
+    %th ATK Range
+    %th Skills
+    %th Actions
 
   %tbody
-    - @moderators.each do |uu|
+    - @char_confs.each do |cc|
       %tr
-        %td= uu.email
+        %td= link_to cc.name, edit_admin_char_conf_path(cc)
+        %td= cc.type
+        %td= cc.atk_type
+        %td= cc.atk_range
+        %td= cc.skills.collect(&:name).join ","
+        %td
+          = link_to "delete", admin_char_conf_path(cc), :method => :delete, :confirm => "Sure to do that"
 
 
-= paginate @moderators

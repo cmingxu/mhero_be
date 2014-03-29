@@ -9,5 +9,7 @@ module Conf
     field :type, type: String
     field :atk_type, type: String
     field :atk_range, type: String
+
+    has_many :skills, :class_name => "Conf::Skill"
   end
 end

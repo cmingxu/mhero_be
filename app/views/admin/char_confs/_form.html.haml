@@ -1,0 +1,8 @@
+= form_for @char_conf, :url => @char_conf.new_record? ? admin_char_confs_path : admin_char_conf_path(@char_conf), :html => { :role => "form", :class => "form-horizontal" } do |f|
+  = control_group_helper "Name", "name of characters", f.object.errors[:name].first do
+    = f.text_field :name, :class => "form-control"
+  = control_group_helper "Type", "", f.object.errors[:type].first do
+    = f.select :type, options_for_select(Conf::Char::CHAR_TYPE, f.object.type), :class => "selectpicker"
+  = control_group_helper "Attack Type", "", f.object.errors[:atk_type].first do
+    = f.select :atk_type, options_for_select(Conf::Char::CHAR_ATK_TYPE, f.object.atk_type), :class => "selectpicker"
+  = f.submit "Submit", :class => "btn btn-default"
