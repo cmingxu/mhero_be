@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #root = Rails.env.development? ? File.expand_path(File.join(File.dirname(__FILE__), "..")) : "/home/www/code/current"
 root = "/home/www/code/current"
 

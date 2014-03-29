@@ -1,0 +1,31 @@
+
+= link_to "New skill Config", new_admin_skill_conf_path, :class => "btn btn-primary"
+%table.table
+  %thead
+    %th Name
+    %th Icon
+    %th Type
+    %th colddown_time
+    %th skill_range
+    %th affect_target
+    %th affect_time
+    %th affect_area
+    %th addition_effect
+    %th Action
+
+  %tbody
+    - @conf_skills.each do |cp|
+      %tr
+        %td= link_to cp.name, edit_admin_skill_conf_path(cp)
+        %td= cp.icon
+        %td= cp.type
+        %td= cp.colddown_time
+        %td= cp.skill_range
+        %td= cp.affect_target
+        %td= cp.affect_time
+        %td= cp.affect_area
+        %td= cp.addition_effect
+        %td
+          = link_to "delete", admin_skill_conf_path(cp), :method => :delete, :confirm => "Sure to do that"
+
+

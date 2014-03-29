@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Conf
   class Char
     include Mongoid::Document
@@ -9,6 +10,8 @@ module Conf
     field :type, type: String
     field :atk_type, type: String
     field :atk_range, type: String
+
+    field :initial_char, type: Boolean
 
     has_many :skills, :class_name => "Conf::Skill"
   end

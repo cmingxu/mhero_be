@@ -5,4 +5,8 @@
     = f.select :type, options_for_select(Conf::Char::CHAR_TYPE, f.object.type), :class => "selectpicker"
   = control_group_helper "Attack Type", "", f.object.errors[:atk_type].first do
     = f.select :atk_type, options_for_select(Conf::Char::CHAR_ATK_TYPE, f.object.atk_type), :class => "selectpicker"
+
+  = control_group_helper "作为初始备选", "", f.object.errors[:initial_char].first do
+    = f.check_box :initial_char
+
   = f.submit "Submit", :class => "btn btn-default"

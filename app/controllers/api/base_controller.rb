@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Api::BaseController < ApplicationController
   before_filter :switch_to_right_database
   before_filter :login_required

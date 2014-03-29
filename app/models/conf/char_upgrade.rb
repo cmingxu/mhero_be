@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Conf
   class CharUpgrade
     include Mongoid::Document

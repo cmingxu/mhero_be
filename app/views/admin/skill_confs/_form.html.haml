@@ -1,0 +1,31 @@
+= form_for @conf_skill, :url => @conf_skill.new_record? ? admin_skill_confs_path : admin_skill_conf_path(@conf_skill), :html => { :role => "form", :class => "form-horizontal" } do |f|
+  = control_group_helper "Name", "name of characters", f.object.errors[:name].first do
+    = f.text_field :name, :class => "form-control"
+
+  = control_group_helper "Icon", "name of characters", f.object.errors[:name].first do
+    = f.text_field :icon, :class => "form-control"
+
+  = control_group_helper "Type", "", f.object.errors[:type].first do
+    = f.select :type, options_for_select(Conf::Skill::SKILL_TYPE, f.object.type), :class => "selectpicker"
+
+  = control_group_helper "Colddown Time", "name of characters", f.object.errors[:name].first do
+    = f.text_field :colddown_time, :class => "form-control"
+
+
+  = control_group_helper "Affect Area", "name of characters", f.object.errors[:name].first do
+    = f.text_field :affect_area, :class => "form-control"
+
+
+  = control_group_helper "Affect Target", "name of characters", f.object.errors[:name].first do
+    = f.text_field :affect_target, :class => "form-control"
+
+  = control_group_helper "Affect Time", "name of characters", f.object.errors[:name].first do
+    = f.text_field :affect_time, :class => "form-control"
+
+
+  = control_group_helper "Addition Effect", "name of characters", f.object.errors[:name].first do
+    = f.select :type, options_for_select(Conf::Skill::ADDITION_EFFECT, f.object.type), :class => "selectpicker"
+
+
+  = f.submit "Submit", :class => "btn btn-default"
+

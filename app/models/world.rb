@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class World < GlobalBase
   include Mongoid::Document
   field :name, type: String
