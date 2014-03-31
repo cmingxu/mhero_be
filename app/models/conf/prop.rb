@@ -7,5 +7,8 @@ module Conf
 
     field :type, type: String
     field :name, type: String
+
+    validates :name, :presence => true
+    validates :name, :uniqueness => true
   end
 end

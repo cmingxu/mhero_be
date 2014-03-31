@@ -14,5 +14,16 @@ module Conf
     field :affect_time, type: Integer
     field :affect_target, type: String
     field :addition_effect, type: String
+
+
+    validates :name, :presence => true
+    validates :name, :uniqueness => true
+    validates :colddown_time, :presence => true
+    validates :skill_range, :presence => true
+    validates :affect_target, :presence => true
+    validates :affect_time, :presence => true
+    validates :affect_area, :presence => true
+    validates :addition_effect, :presence => true
+    
   end
 end

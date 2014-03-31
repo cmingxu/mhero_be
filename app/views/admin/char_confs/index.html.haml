@@ -6,6 +6,7 @@
     %th ATK Type
     %th ATK Range
     %th Skills
+    %th Initial?
     %th Actions
 
   %tbody
@@ -16,6 +17,7 @@
         %td= cc.atk_type
         %td= cc.atk_range
         %td= cc.skills.collect(&:name).join ","
+        %td= cc.initial_char
         %td
           = link_to "delete", admin_char_conf_path(cc), :method => :delete, :confirm => "Sure to do that"
 

@@ -6,9 +6,9 @@ module ApplicationHelper
 
   def control_group_helper(label_name,  description = "", error_message = "", float = "both",  &block)
     error_class = error_message.blank? ? "has-success" : "has-error  has-feedback"
-    error_div = content_tag(:span, error_message, :class => "glyphicon glyphicon-remove form-control-feedback")
+    error_div = error_message.present? ? content_tag(:span, error_message, :class => "glyphicon glyphicon-remove form-control-feedback")  : ""
     label_html = content_tag(:span, label_name, :class => "control-label col-sm-2 ")
-    description_html = content_tag(:p, "（#{description})", :class => "help-block")
+    description_html = content_tag(:p, "#{description}", :class => "help-block")
     field = content_tag(:div, capture(&block) + error_div, :class => "col-sm-10")
     content_tag(:div, label_html + field + description_html, :class => "form-group #{error_class}")
   end

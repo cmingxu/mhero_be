@@ -9,4 +9,9 @@
   = control_group_helper "作为初始备选", "", f.object.errors[:initial_char].first do
     = f.check_box :initial_char
 
+  = control_group_helper "技能", "", "" do
+    - Conf::Skill.all.each do |skill|
+      = skill.name
+      = check_box_tag "conf_char[skill_ids][]", @char_conf.skills.collect(&:id).include?(skill.id)
+
   = f.submit "Submit", :class => "btn btn-default"
