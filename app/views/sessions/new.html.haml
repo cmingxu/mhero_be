@@ -1,9 +1,9 @@
-= form_tag sessions_path, :class => "form form-horizontal" do
+= form_tag sessions_path, :class => "form-horizontal", :role => "form" do
   = control_group_helper "User Login" do
-    = text_field_tag "login"
+    = text_field_tag "login", params[:login], :class => "form-control"
 
   = control_group_helper "password" do
-    = password_field_tag "password"
+    = password_field_tag "password", params[:password], :class => "form-control"
 
   .form-actions
     = submit_tag "Login", :class => "btn btn-primary"

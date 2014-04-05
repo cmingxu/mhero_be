@@ -30,6 +30,7 @@ group :development do
   gem 'awesome_print'
   gem 'erb2haml'
   gem 'magic_encoding'
+  gem 'pry-rails'
 end
 
 group :doc do

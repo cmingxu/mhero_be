@@ -8,6 +8,7 @@ Mhero::Application.routes.draw do
     get "/", to: "base#index"
     resources :users
     resources :uniq_users
+    resources :characters
     resources :worlds
     resources :char_confs
     resources :prop_confs
@@ -29,6 +30,6 @@ Mhero::Application.routes.draw do
     resources :worlds, :only => [:index]
   end
 
-  root "welcome#index"
+  root "admin/base#index"
 
 end

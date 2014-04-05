@@ -43,6 +43,6 @@ class Admin::CharConfsController < Admin::BaseController
 
   private
   def char_conf_params
-    params.require(:conf_char).permit(:name, :type, :atk_type, :initial_char)
+    params.require(:conf_char).permit(:name, :type, :atk_type, :initial_char, :conf_skill_ids => [], :conf_prop_ids => [])
   end
 end

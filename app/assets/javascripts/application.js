@@ -22,4 +22,6 @@ $(document).ready(function () {
   $('select').selectpicker({
       style: 'btn-info'
   });
+
+  $("*[data-toggle='tooltip']").tooltip();
 });

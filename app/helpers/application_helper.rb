@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
-  def icon_link(what, color="")
-    raw "<i class = 'icon-#{what.to_s} icon-#{color}'></i>"
+  def glyphicon(what, hint="", color="")
+    raw "<span class='glyphicon glyphicon-#{what}' data-toggle='tooltip' data-placement='left' title='#{hint}'></span>"
   end
 
   def control_group_helper(label_name,  description = "", error_message = "", float = "both",  &block)

@@ -12,6 +12,11 @@
   = control_group_helper "技能", "", "" do
     - Conf::Skill.all.each do |skill|
       = skill.name
-      = check_box_tag "conf_char[skill_ids][]", @char_conf.skills.collect(&:id).include?(skill.id)
+      = check_box_tag "conf_char[conf_skill_ids][]", skill.id, @char_conf.skills.collect(&:id).include?(skill.id)
+
+  = control_group_helper "装备", "", "" do
+    - Conf::Prop.all.each do |prop|
+      = prop.name
+      = check_box_tag "conf_char[conf_prop_ids][]", prop.id, @char_conf.props.collect(&:id).include?(prop.id)
 
   = f.submit "Submit", :class => "btn btn-default"

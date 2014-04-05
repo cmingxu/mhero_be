@@ -23,7 +23,6 @@ class Api::UniqUsersController < Api::BaseController
   def create
     @uniq_user = UniqUser.new uniq_user_params
     @user = @uniq_user.generate_user
-    @user.generate_characters
     if @uniq_user.save && @user.save
       render :json => api_success(:id => @uniq_user._id.to_s, :user => @user)
     else

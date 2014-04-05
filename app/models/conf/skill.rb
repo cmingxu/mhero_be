@@ -25,5 +25,6 @@ module Conf
     validates :affect_area, :presence => true
     validates :addition_effect, :presence => true
     
+    has_and_belongs_to_many :chars, :class_name => "Conf::Char"
   end
 end

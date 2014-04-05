@@ -11,6 +11,6 @@
         %td= link_to cp.name, edit_admin_prop_conf_path(cp)
         %td= cp.type
         %td
-          = link_to "delete", admin_prop_conf_path(cp), :method => :delete, :confirm => "Sure to do that"
+          = link_to glyphicon(:trash), admin_prop_conf_path(cp), :method => :delete, :data => { :confirm => "Sure to do that" }
 
 

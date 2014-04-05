@@ -18,13 +18,17 @@ class User < WorldBase
   embeds_many :characters
   belongs_to :uniq_user
 
+  after_create :generate_characters
+
   def self.system_generate_name
     "Player%08d" % User.count
   end
 
   def generate_characters
-    self.char_capacity.times do
-      self.characters << Character.new
+    
+    Conf::Char.random_char_for_user.each do |cc|
+      ap cc
+      self.characters << Character.init_by_conf_char(cc)
     end
   end
 
