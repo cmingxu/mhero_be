@@ -45,7 +45,7 @@ production:
     default:
       database: mhero_global_pro
       hosts:
-        - gamedev.108km.com:27017
+        - 127.0.0.1:27017
       username: www
       password: www@www
       options:
@@ -54,7 +54,7 @@ production:
       databases:
         database: mhero_world1_pro
         hosts:
-          - gamedev.108km.com:27017
+          - 127.0.0.1:27017
         username: www
         password: www@www
         options:

@@ -50,7 +50,7 @@ namespace :unicorn do
   task :start do
     on roles(:app) do 
       within("#{current_path}") do
-        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
+        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile RAILS_ENV=production bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
       end
     end
   end
@@ -63,7 +63,7 @@ namespace :unicorn do
           execute "kill -9 #{pid}" if pid
           execute "rm #{current_path}/tmp/pids/unicorn.pid"
         end
-        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
+        execute "BUNDLE_GEMFILE=#{current_path}/Gemfile RAILS_ENV=production bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
       end
     end
   end
