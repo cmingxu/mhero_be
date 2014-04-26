@@ -26,7 +26,7 @@ set :deploy_to, '/home/www/code'
 # set :pty, true
 
 # Default value for :linked_files is []
-#set :linked_files, %w{config/mongoid.yml}
+set :linked_files, %w{config/mongoid.yml}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
@@ -41,7 +41,7 @@ namespace :unicorn do
   task :stop do
     on roles(:app) do 
       within("#{current_path}") do
-        pid = capture "cat #{current}/tmp/pids/unicorn.pid"
+        pid = capture "cat #{shared_path}/tmp/pids/unicorn.pid"
         execute "kill -HUP #{pid}"
       end
     end
@@ -58,10 +58,10 @@ namespace :unicorn do
   task :restart do
     on roles(:app) do 
       within("#{current_path}") do
-        if test("[ -f #{current_path}/tmp/pids/unicorn.pid ]")
-          pid = capture "cat #{current_path}/tmp/pids/unicorn.pid"
+        if test("[ -f #{shared_path}/tmp/pids/unicorn.pid ]")
+          pid = capture "cat #{shared_path}/tmp/pids/unicorn.pid"
           execute "kill -9 #{pid}" if pid
-          execute "rm #{current_path}/tmp/pids/unicorn.pid"
+          execute "rm #{shared_path}/tmp/pids/unicorn.pid"
         end
         execute "BUNDLE_GEMFILE=#{current_path}/Gemfile RAILS_ENV=production bundle exec unicorn_rails -c #{current_path}/config/unicorn.rb -D"
       end
