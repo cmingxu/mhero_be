@@ -87,8 +87,9 @@ namespace :deploy do
     end
   end
 
-  after "deploy:published", "deploy:bundle_update"
-  after "deploy:published", "deploy:asset_compile"
-  after "deploy:published", "unicorn:restart"
 
 end
+
+after "deploy:published", "deploy:bundle_update"
+after "deploy:published", "deploy:asset_compile"
+after "deploy:published", "unicorn:restart"
