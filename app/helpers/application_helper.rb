@@ -1,5 +1,10 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
+
+  def glyphicon_btn(what, text="", color="")
+    raw "#{text}  <span class='glyphicon glyphicon-#{what}' data-toggle='tooltip' data-placement='left' ></span>"
+  end
+
   def glyphicon(what, hint="", color="")
     raw "<span class='glyphicon glyphicon-#{what}' data-toggle='tooltip' data-placement='left' title='#{hint}'></span>"
   end
@@ -9,7 +14,7 @@ module ApplicationHelper
     error_div = error_message.present? ? content_tag(:span, error_message, :class => "glyphicon glyphicon-remove form-control-feedback")  : ""
     label_html = content_tag(:span, label_name, :class => "control-label col-sm-2 ")
     description_html = content_tag(:p, "#{description}", :class => "help-block")
-    field = content_tag(:div, capture(&block) + error_div, :class => "col-sm-10")
+    field = content_tag(:div, (capture(&block) || "") + error_div, :class => "col-sm-10")
     content_tag(:div, label_html + field + description_html, :class => "form-group #{error_class}")
   end
 

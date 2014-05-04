@@ -1,0 +1,4 @@
+= form_for [:admin, @uniq_user], :html => { :role => "form", :class => "form-horizontal" } do |f|
+  = control_group_helper "Email", "email of uniq user", f.object.errors[:email].first do
+    = f.email_field :email, :class => "form-control"
+
