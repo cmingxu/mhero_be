@@ -1,38 +1,58 @@
-== README
+## Mhero BE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## envrionment needed
 
-Things you may want to cover:
+* rvm
 
-* Ruby version
+```
+ \curl -sSL https://get.rvm.io | bash
 
-* System dependencies
+* ruby
 
-* Configuration
+```
+  rvm install 2.1.0
+  rvm use 2.1.0
 
-* Database creation
+* gems
 
-* Database initialization
+```
+  cd MHERO_PATH && bundle install
 
-* How to run the test suite
+* mongo - make sure mongo installed and listen 
 
-* Services (job queues, cache servers, search engines, etc.)
+* redis
 
-* Deployment instructions
+```
+  redis-server
 
-* ...
+* load required data
+
+```
+  cd MHERO_PATH && bundle exec rake db:seed
+
+## how to start
+
+```
+  cd MHERO_PATH && rails s
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## test
+
+```
+  ruby test.rb
+
+## deploy to production
+
+### make sure have public key uploaded to production server
+
+```
+  cap production deploy
 
 
 
 ### Login ###
 
 ``` curl -X PUT localhost:3000/api/uniq_users/login -d "name=player_abc&password=admin"
-
 
 ``` curl "http://localhost:3000/api/home?login_token=f097c5cde9c8ff62"
 
