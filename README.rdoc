@@ -4,56 +4,47 @@
 
 * rvm
 
-```
  \curl -sSL https://get.rvm.io | bash
 
 * ruby
 
-```
   rvm install 2.1.0
   rvm use 2.1.0
 
 * gems
 
-```
   cd MHERO_PATH && bundle install
 
 * mongo - make sure mongo installed and listen 
 
 * redis
 
-```
   redis-server
 
 * load required data
 
-```
   cd MHERO_PATH && bundle exec rake db:seed
 
 ## how to start
 
-```
   cd MHERO_PATH && rails s
 
 
 ## test
 
-```
   ruby test.rb
 
 ## deploy to production
 
 ### make sure have public key uploaded to production server
 
-```
   cap production deploy
 
 
 
 ### Login ###
 
-``` curl -X PUT localhost:3000/api/uniq_users/login -d "name=player_abc&password=admin"
-
-``` curl "http://localhost:3000/api/home?login_token=f097c5cde9c8ff62"
+  curl -X PUT localhost:3000/api/uniq_users/login -d "name=player_abc&password=admin"
+  curl "http://localhost:3000/api/home?login_token=f097c5cde9c8ff62"
 
 
