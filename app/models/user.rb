@@ -13,6 +13,7 @@ class User < WorldBase
   field :char_capacity, type: Integer, default: 3
   field :char_colddown_time, type: Integer, default: 60
   field :pvp_times, type: Integer, default: 10
+  field :fte_finished, type: Boolean, default: false
 
 
   embeds_many :characters
@@ -25,9 +26,7 @@ class User < WorldBase
   end
 
   def generate_characters
-    
     Conf::Char.random_char_for_user.each do |cc|
-      ap cc
       self.characters << Character.init_by_conf_char(cc)
     end
   end
