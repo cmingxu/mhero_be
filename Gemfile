@@ -19,6 +19,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'mongoid', github: 'mongoid/mongoid'
 
+gem 'redis', '~> 3.0.7'
+
 
 gem 'bson_ext'
 gem "haml-rails"
